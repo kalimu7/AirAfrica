@@ -1,8 +1,8 @@
 package Yc.Airafrica;
 
-import Yc.Airafrica.Dao.adminDao;
+import Yc.Airafrica.Dao.ClientDao;
 import Yc.Airafrica.Database.DatabaseConnection;
-import Yc.Airafrica.Model.admin;
+import Yc.Airafrica.Model.Client;
 
 import java.util.Scanner;
 
@@ -12,13 +12,10 @@ public class main {
                 Scanner scanner = new Scanner(System.in);
 
                 //add a Admin
-                System.out.println("enter email");
-                String email = scanner.nextLine();
-                System.out.println("enter Password");
-                String ps = scanner.nextLine();
-                admin admin = new admin(email,ps);
-                adminDao adminDao = new adminDao();
-                adminDao.saveAdmin(admin);
+
+                Client client = new Client("fzefz","karim","mahjour","zefzef@mail.com","98765456");
+                ClientDao clientDao = new ClientDao();
+                clientDao.SaveClient(client);
 
         }
 }

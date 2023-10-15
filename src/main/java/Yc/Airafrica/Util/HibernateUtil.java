@@ -2,7 +2,8 @@ package Yc.Airafrica.Util;
 
 import java.util.Properties;
 
-import Yc.Airafrica.Model.admin;
+import Yc.Airafrica.Model.Client;
+import Yc.Airafrica.Model.Admin;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -32,7 +33,9 @@ public class HibernateUtil {
                 settings.put(Environment.HBM2DDL_AUTO, "update");
 
                 configuration.setProperties(settings);
-                configuration.addAnnotatedClass(admin.class);
+                configuration.addAnnotatedClass(Admin.class);
+                configuration.addAnnotatedClass(Client.class);
+
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
