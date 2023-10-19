@@ -1,5 +1,4 @@
 package Yc.Airafrica.Servlet;
-import Yc.Airafrica.Dao.ClientDao;
 import Yc.Airafrica.Model.Client;
 import Yc.Airafrica.Service.ClientService;
 import jakarta.servlet.RequestDispatcher;
@@ -95,7 +94,6 @@ public class ClientServlet extends HttpServlet {
         }catch(ServletException | IOException e){
             e.printStackTrace();
         }
-
     }
 
     private void InsertClient(HttpServletRequest request, HttpServletResponse response) throws  IOException{

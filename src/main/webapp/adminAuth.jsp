@@ -1,7 +1,8 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% session.getAttribute("") %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <% String baseUrl = (String) request.getAttribute("baseUrl"); %>
+
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@
     <div class="wrapper">
 
         <div class="title"><span>Login Form</span></div>
-        <form action="<%= baseUrl %>Client?action=login" method="post" >
+        <form action="<%= baseUrl %>SAdmin?action=authAdmin" method="post" >
 
             <div class="row">
                 <i class="fas fa-user"></i>
