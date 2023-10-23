@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import Yc.Airafrica.Model.Client;
 import Yc.Airafrica.Model.Admin;
+import Yc.Airafrica.Model.Flight;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -35,6 +36,7 @@ public class HibernateUtil {
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(Admin.class);
                 configuration.addAnnotatedClass(Client.class);
+                configuration.addAnnotatedClass(Flight.class);
 
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()

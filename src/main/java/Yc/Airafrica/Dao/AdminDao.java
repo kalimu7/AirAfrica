@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.io.PrintWriter;
+
 
 public class AdminDao {
     private boolean isLoged;
@@ -19,9 +19,7 @@ public class AdminDao {
             transaction = session.beginTransaction();
 
             Admin admin = (Admin) session.createQuery("from Admin a where a.email = :email").setParameter("email",email).uniqueResult();
-            System.out.println("email : " + admin.getEmail());
-            System.out.println("password : " + admin.getPassword());
-            System.out.println("checkpw " + BCrypt.checkpw(password, admin.getPassword()));
+
             if(admin != null && BCrypt.checkpw(password, admin.getPassword())){
                 this.isLoged = true;
             }else{

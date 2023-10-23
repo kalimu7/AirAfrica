@@ -3,7 +3,10 @@ package Yc.Airafrica.Service;
 import Yc.Airafrica.Dao.ClientDao;
 import Yc.Airafrica.Model.Client;
 
+import Yc.Airafrica.Model.Flight;
 import org.mindrot.jbcrypt.BCrypt;
+
+import java.util.List;
 
 
 public class ClientService {
@@ -29,5 +32,10 @@ public class ClientService {
     public Client login(String email,String password){
         Client client = this.clientDao.Login(email,password);
         return client;
+
+    }
+    public List<Flight> searchFlight(String departureCity,String arrivalCity){
+
+        return null;
     }
 }

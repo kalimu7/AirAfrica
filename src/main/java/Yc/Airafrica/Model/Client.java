@@ -34,7 +34,8 @@ public class Client {
     @Column (name = "phone")
     private String phone;
 
-    public Client(String password, String firstname, String lastname, String email, String phone) {
+    public Client(String password , String firstname , String lastname , String email , String phone) {
+
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;

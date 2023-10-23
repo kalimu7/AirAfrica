@@ -1,18 +1,24 @@
 package Yc.Airafrica.Servlet;
 import Yc.Airafrica.Model.Client;
+import Yc.Airafrica.Model.Flight;
 import Yc.Airafrica.Service.ClientService;
+import Yc.Airafrica.Service.FlightService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.util.List;
 
 @WebServlet(name = "ClientServlet", value = "/Client")
 public class ClientServlet extends HttpServlet {
     private ClientService clientService;
+    private FlightService flightService;
     public void init() {
         this.clientService = new ClientService();
+        this.flightService = new FlightService();
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws  IOException {
@@ -26,13 +32,38 @@ public class ClientServlet extends HttpServlet {
             case "login":
             loginClient(request,response);
             break;
-            case "loginAdmin":
-            loginAdmin(request,response);
+            case "Search":
+            searchFlight(request,response);
             break;
         }
     }
 
-    private void loginAdmin(HttpServletRequest request, HttpServletResponse response) {
+    private void searchFlight(HttpServletRequest request, HttpServletResponse response) {
+
+        try {
+            PrintWriter out = response.getWriter();
+            String departureCity = request.getParameter("from");
+            String arrivalCity = request.getParameter("to");
+            String date =  request.getParameter("when");
+            LocalDate departureDate;
+            if(date.isEmpty()){
+                departureDate = null;
+            }else{
+                departureDate = LocalDate.parse(date);
+            }
+
+            List<Flight> flights = this.flightService.searchFlihgt(departureCity,arrivalCity,departureDate);
+            request.setAttribute("data",flights);
+            for(Flight fl : flights){
+                out.println(fl.getArrivalcity());
+                out.println(fl.getPrice());
+            }
+            RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+            dispatcher.forward(request,response);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -58,7 +89,20 @@ public class ClientServlet extends HttpServlet {
             case "adminAuth":
                 ShowAdminAuthPage(request,response);
                 break;
+            case "home":
+                showhomepage(request,response);
+                break;
 
+        }
+
+    }
+
+    private void showhomepage(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+            dispatcher.forward(request,response);
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
     }
