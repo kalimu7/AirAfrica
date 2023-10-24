@@ -8,6 +8,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="data" value="${requestScope.data}" ></c:set>
+<c:set var="clientcode" value="${sessionScope.code}" />
+
 <html>
 <head>
     <title>Title</title>
@@ -99,12 +101,15 @@
 
     </form>
 </section>
-
+<p> <c:out value="${clientcode}" /> </p>
 <section class="results"  >
     <c:forEach var="fl" items="${data}">
+        <form method="post" action="http://localhost:8080/AirAfrica_war_exploded/Client?action=book">
+        <input type="text" name="flightid" value=" <c:out value="${fl.flightid}"  /> " />
     <div class="card-flight" >
 
         <div class="main-body" >
+
             <div class="">
                 <label> <c:out value="${fl.departurecity}" /> </label>
                 <p><c:out value="${fl.departuretime}" /> </p>
@@ -114,33 +119,20 @@
             <div class="">
                 <label> <c:out value="${fl.arrivalcity}" /> </label>
                 <p><c:out value="${fl.arrivaltime}" /></p>
+
             </div>
         </div>
         <div class="genraleinfo">
-            <p>  <span style="margin: 0 20px;"> Direct Flight </span>  <span> <c:out value="${fl.departuredate}" /> </span> </p> <br>
-            <button class="price"><c:out value="${fl.price}" /> DH</button>
+            <p>  <span style="margin: 0 20px;"> Direct Flight </span>  <span> <c:out value="${fl.departuredate}" /> </span> </p>
+            <label> Seats Capacity         <c:out value="${fl.seatcapacity}" /> </label>
+            <br>
+            <button type="submit" class="price"><c:out value="${fl.price}" /> DH</button>
+
         </div>
     </div>
+        </form>
     </c:forEach>
-    <div class="card-flight" >
 
-        <div class="main-body" >
-            <div class="">
-                <label> Casablanca </label>
-                <p>10:30</p>
-            </div>
-
-            <i class="fa-solid fa-plane"></i>
-            <div class="">
-                <label> Paris </label>
-                <p>14:30</p>
-            </div>
-        </div>
-        <div class="genraleinfo">
-            <p>  <span style="margin: 0 20px;"> Direct Flight </span>  <span> 20/10/2023 </span> </p> <br>
-            <button class="price">6500 DH</button>
-        </div>
-    </div>
 
 </section>
 

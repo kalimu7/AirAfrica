@@ -28,7 +28,7 @@
             <div class="row button">
                 <input type="submit" value="Login">
             </div>
-            <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
+            <div class="signup-link">Not a member? <a href="<%= baseUrl %>Client?action=signup">Signup now</a></div>
         </form>
     </div>
 </div>

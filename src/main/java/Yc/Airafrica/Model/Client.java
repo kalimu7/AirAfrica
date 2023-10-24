@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -33,6 +34,10 @@ public class Client {
 
     @Column (name = "phone")
     private String phone;
+
+    @OneToMany(mappedBy = "client")
+    private List<Booking> bookings;
+
 
     public Client(String password , String firstname , String lastname , String email , String phone) {
 

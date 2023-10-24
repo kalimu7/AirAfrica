@@ -5,6 +5,7 @@ import Yc.Airafrica.Model.Flight;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 public class FlightService {
     private FlightDao flightDao;
@@ -15,4 +16,9 @@ public class FlightService {
 
         return this.flightDao.searchFlight(departurecity,arrivalCity,date);
     }
+
+    public boolean bookflight(UUID flight,UUID clientid,LocalDate reservationdate){
+        return false;
+    }
+
 }

@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -40,6 +41,11 @@ public class Flight {
 
     @Column(name = "seatcapacity")
     private int seatcapacity = 30;
+
+
+    @OneToMany(mappedBy = "flight")
+    private List<Booking> bookings;
+
 
     public Flight() {
 

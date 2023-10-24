@@ -87,12 +87,6 @@ public class AdminServlet extends HttpServlet {
                 case "Showupdate":
                 showupdate(request,response);
                 break;
-                case "delete":
-                //deleteflight(request,response);
-                break;
-                case "selectAll":
-
-                break;
                 case "Dashboard":
                 dashboardAdmin(request,response);
                 break;

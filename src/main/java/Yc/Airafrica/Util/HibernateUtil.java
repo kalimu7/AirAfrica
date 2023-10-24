@@ -2,6 +2,7 @@ package Yc.Airafrica.Util;
 
 import java.util.Properties;
 
+import Yc.Airafrica.Model.Booking;
 import Yc.Airafrica.Model.Client;
 import Yc.Airafrica.Model.Admin;
 import Yc.Airafrica.Model.Flight;
@@ -37,6 +38,7 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(Admin.class);
                 configuration.addAnnotatedClass(Client.class);
                 configuration.addAnnotatedClass(Flight.class);
+                configuration.addAnnotatedClass(Booking.class);
 
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()

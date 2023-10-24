@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @WebServlet(name = "ClientServlet", value = "/Client")
 public class ClientServlet extends HttpServlet {
@@ -35,6 +36,35 @@ public class ClientServlet extends HttpServlet {
             case "Search":
             searchFlight(request,response);
             break;
+            case "book":
+
+            BookFlight(request,response);
+            break;
+        }
+    }
+
+    private void BookFlight(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            PrintWriter out = response.getWriter();
+            out.println("hello world ");
+            //HttpSession session = request.getSession();
+            //String clientid = (String) session.getAttribute("code");
+            UUID flightid = UUID.fromString(request.getParameter("flightid"));
+            LocalDate todaydate = LocalDate.now();
+
+
+            out.println("hello world");
+            out.println("fid " + flightid);
+            //out.println("cid " + clientid);
+            out.println(" td " + todaydate );
+
+
+
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -149,7 +179,7 @@ public class ClientServlet extends HttpServlet {
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
-        Client client = new Client(passport,firstName,lastName,email,phone);
+        Client client = new Client(password,firstName,lastName,email,phone);
         boolean isCreated = this.clientService.createClient(client);
         if(isCreated){
             out.println("created successfully");

@@ -1,5 +1,6 @@
 package Yc.Airafrica.Dao;
 
+import Yc.Airafrica.Model.Booking;
 import Yc.Airafrica.Model.Flight;
 import Yc.Airafrica.Util.HibernateUtil;
 import org.hibernate.Session;
@@ -125,6 +126,20 @@ public class FlightDao {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean bookflight(UUID flight,UUID clientid,LocalDate reservationdate){
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            session.save(Booking.class);
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
     }
 
 
