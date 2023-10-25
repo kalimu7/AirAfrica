@@ -1,4 +1,5 @@
 package Yc.Airafrica.Servlet;
+import Yc.Airafrica.Model.Booking;
 import Yc.Airafrica.Model.Client;
 import Yc.Airafrica.Model.Flight;
 import Yc.Airafrica.Service.ClientService;
@@ -45,23 +46,32 @@ public class ClientServlet extends HttpServlet {
 
     private void BookFlight(HttpServletRequest request, HttpServletResponse response) {
         try {
+
             PrintWriter out = response.getWriter();
             out.println("hello world ");
-            //HttpSession session = request.getSession();
-            //String clientid = (String) session.getAttribute("code");
-            UUID flightid = UUID.fromString(request.getParameter("flightid"));
+            HttpSession session = request.getSession();
+            UUID clientid = (UUID) session.getAttribute("code") ;
             LocalDate todaydate = LocalDate.now();
-
-
-            out.println("hello world");
-            out.println("fid " + flightid);
-            //out.println("cid " + clientid);
-            out.println(" td " + todaydate );
+            String flightid = request.getParameter("flightid");
+            UUID fid = UUID.fromString(flightid);
 
 
 
+            Client client = new Client();
+            client.setCode(clientid);
+            Flight flight = new Flight();
+            flight.setFlightid(fid);
+            Booking booking = new Booking();
+            booking.setClient(client);
+            booking.setFlight(flight);
+            booking.setReservationdate(todaydate);
 
-
+            boolean added =  this.flightService.bookflight(booking);
+            if(added){
+                out.println("booked successfully");
+            }else{
+                out.println("cant make the booking");
+            }
 
         }catch (Exception e){
             e.printStackTrace();

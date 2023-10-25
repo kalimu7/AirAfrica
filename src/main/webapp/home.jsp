@@ -105,7 +105,7 @@
 <section class="results"  >
     <c:forEach var="fl" items="${data}">
         <form method="post" action="http://localhost:8080/AirAfrica_war_exploded/Client?action=book">
-        <input type="text" name="flightid" value=" <c:out value="${fl.flightid}"  /> " />
+        <input type="text" name="flightid" value="${fl.flightid}" />
     <div class="card-flight" >
 
         <div class="main-body" >

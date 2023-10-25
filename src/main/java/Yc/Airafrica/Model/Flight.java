@@ -43,7 +43,7 @@ public class Flight {
     private int seatcapacity = 30;
 
 
-    @OneToMany(mappedBy = "flight")
+    @OneToMany(mappedBy = "flight",fetch = FetchType.EAGER)
     private List<Booking> bookings;
 
 
