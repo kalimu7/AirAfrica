@@ -1,6 +1,7 @@
 package Yc.Airafrica;
 
 import Yc.Airafrica.Dao.ClientDao;
+import Yc.Airafrica.Dao.FlightDao;
 import Yc.Airafrica.Database.DatabaseConnection;
 import Yc.Airafrica.Model.Client;
 import Yc.Airafrica.Model.Flight;
@@ -18,8 +19,11 @@ public class main {
 
                 DatabaseConnection.getInstance().getConnection();
 
-                HibernateUtil.getSessionFactory().getCurrentSession();
-
+                //HibernateUtil.getSessionFactory().getCurrentSession();
+                FlightDao flightDao = new FlightDao();
+                FlightDao flightDao1 = new FlightDao();
+                System.out.println("first one " + flightDao);
+                System.out.println("first one " + flightDao1);
 
         }
 }

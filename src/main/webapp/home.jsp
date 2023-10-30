@@ -68,7 +68,7 @@
             <span><i class="ri-user-3-line"></i></span>
             <div class="input__content">
                 <div class="input__group">
-                    <input type="number" />
+                    <input type="number" name="guests" placeholder="0" min="0" />
 
                 </div>
                 <p>Add guests</p>
@@ -93,10 +93,15 @@
                 </div>
                 <p>Add date</p>
             </div>
+
             <section style="display:flex;justify-content:center;width: 100%" >
                 <button type="submit" class="btn" ><i class="ri-search-line"></i></button>
             </section>
+
+
         </div>
+
+
 
 
     </form>

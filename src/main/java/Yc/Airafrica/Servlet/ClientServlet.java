@@ -132,9 +132,20 @@ public class ClientServlet extends HttpServlet {
             case "home":
                 showhomepage(request,response);
                 break;
+            case "booking":
+                showBookingpage(request,response);
 
         }
 
+    }
+
+    private void showBookingpage(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("bookingPage.jsp");
+            dispatcher.forward(request,response);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void showhomepage(HttpServletRequest request, HttpServletResponse response) {

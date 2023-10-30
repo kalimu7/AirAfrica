@@ -17,7 +17,6 @@ public class FlightService {
         this.flightDao = new FlightDao();
     }
     public List<Flight> searchFlihgt(String departurecity, String arrivalCity, LocalDate date){
-
         return this.flightDao.searchFlight(departurecity,arrivalCity,date);
     }
 
